@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thelsicker Ascends — Dark Fantasy Metroidvania | Dark Ascension Labs</title>
+  <meta name="description" content="Thelsicker Ascends is a dark fantasy metroidvania where you play as a hooded dark mage exploring 12 interconnected zones. Coming to Steam, PlayStation 5, and Xbox.">
+  <meta property="og:title" content="Thelsicker Ascends — Dark Fantasy Metroidvania">
+  <meta property="og:description" content="Explore 12 zones. Defeat 12 bosses. Awaken 7 dark spells. Coming to Steam, PS5, and Xbox.">
+  <meta property="og:image" content="images/concept/thelsicker_ascends_title.png">
+  <meta property="og:url" content="https://darkascensionlabs.com/thelsicker.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Thelsicker page-specific styles */
+    .thelsicker-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thelsicker-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 70% 40%, rgba(155, 48, 255, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 60%, rgba(123, 104, 238, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .thelsicker-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .thelsicker-hero-text .section-label {
+      margin-bottom: 16px;
+    }
+
+    .thelsicker-hero-text h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .thelsicker-hero-text p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .thelsicker-hero-image {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .thelsicker-hero-image img {
+      width: 100%;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    .platforms-bar {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .platform-item {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .platform-item.active {
+      color: var(--accent-green);
+    }
+
+    /* Features grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h4 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Zone gallery */
+    .zone-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .zone-card {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16/10;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .zone-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    .zone-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px 12px;
+      background: linear-gradient(transparent, rgba(10, 10, 18, 0.9));
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Specs table */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .spec-group {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .spec-group h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-purple);
+      margin-bottom: 16px;
+    }
+
+    .spec-list {
+      list-style: none;
+    }
+
+    .spec-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .spec-list li:last-child {
+      border-bottom: none;
+    }
+
+    .spec-list li span {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .thelsicker-hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .thelsicker-hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .zone-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .platforms-bar {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Dark Ascension <span>Labs</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#games">Games</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#zones">Zones</a></li>
+        <li><a href="#details">Details</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="thelsicker-hero">
+    <div class="thelsicker-hero-grid">
+      <div class="thelsicker-hero-text">
+        <div class="section-label">Coming to Steam, PlayStation 5 &amp; Xbox</div>
+        <h1>Thelsicker Ascends</h1>
+        <p>A dark fantasy metroidvania where you play as a hooded dark mage who discovers a wellspring of arcane power. Start with only a sword. End with the fury of seven devastating spells. Explore 12 interconnected zones, defeat powerful bosses, and ascend to ultimate power.</p>
+        <div class="hero-buttons">
+          <a href="#details" class="btn btn-primary">Coming Soon</a>
+          <a href="index.html#roadmap" class="btn btn-secondary">View Roadmap</a>
+        </div>
+        <div class="platforms-bar">
+          <span class="platform-item active">Steam</span>
+          <span class="platform-item">PlayStation 5</span>
+          <span class="platform-item">Xbox Series X|S</span>
+          <span class="platform-item">Nintendo Switch</span>
+        </div>
+      </div>
+      <div class="thelsicker-hero-image">
+        <img src="images/concept/ascendant_throne_power.png" alt="Thelsicker Ascends — dark mage ascending to power">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container section-center">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Master the Dark Arts</h2>
+      <p class="section-subtitle">A metroidvania built around the thrill of growing from a swordsman into an unstoppable arcane force.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#9876;</div>
+          <h4>Sword to Sorcery</h4>
+          <p>Begin with nothing but a blade. Defeat bosses to awaken ancient spells — Mana Surge, Dark Harvest, Essence Storm, Time Warp, Shadow Clone, Void Pulse, and the devastating Dark Pact.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#9733;</div>
+          <h4>12 Interconnected Zones</h4>
+          <p>From The Awakening's tutorial caves to the Primordial Darkness endgame. Each zone has unique enemies, secrets, and ability gates that reward exploration.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#9760;</div>
+          <h4>12 Boss Fights</h4>
+          <p>Multi-phase boss encounters that test every ability you've unlocked. Each boss guards a new power — defeat them to open paths forward.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#10024;</div>
+          <h4>8 Ancient Artifacts</h4>
+          <p>Hidden across the world, each artifact grants passive bonuses — faster spell cooldowns, increased damage, health regeneration, and more.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#9889;</div>
+          <h4>Tight Movement</h4>
+          <p>Double jump, wall climb, and phantom dash through hazards. Responsive controls with coyote time, jump buffering, and variable jump height for precision platforming.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#127912;</div>
+          <h4>Connected Universe</h4>
+          <p>Set in the same world as Dark Ascension. The same 12 stages, spells, and artifacts are reimagined as a side-scrolling adventure. Cross-game unlocks planned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zones -->
+  <section id="zones" class="roadmap-section">
+    <div class="container section-center">
+      <div class="section-label">The World</div>
+      <h2 class="section-title">12 Zones of Dark Power</h2>
+      <p class="section-subtitle">Each zone escalates in challenge and atmosphere, from shadowed caves to the edge of primordial darkness.</p>
+
+      <div class="zone-gallery">
+        <div class="zone-card">
+          <img src="images/backgrounds/bg_01_awakening.png" alt="Zone 1 — The Awakening">
+          <div class="zone-card-overlay">1. The Awakening</div>
+        </div>
+        <div class="zone-card">
+          <img src="images/backgrounds/bg_06_abyssal_gate.png" alt="Zone 6 — Abyssal Gate">
+          <div class="zone-card-overlay">6. Abyssal Gate</div>
+        </div>
+        <div class="zone-card">
+          <img src="images/backgrounds/bg_08_eldritch_convergence.png" alt="Zone 8 — Eldritch Convergence">
+          <div class="zone-card-overlay">8. Eldritch Convergence</div>
+        </div>
+        <div class="zone-card">
+          <img src="images/backgrounds/bg_12_primordial_darkness.png" alt="Zone 12 — Primordial Darkness">
+          <div class="zone-card-overlay">12. Primordial Darkness</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Game Details -->
+  <section id="details">
+    <div class="container section-center">
+      <div class="section-label">Game Details</div>
+      <h2 class="section-title">At a Glance</h2>
+      <p class="section-subtitle">Everything you need to know about Thelsicker Ascends.</p>
+
+      <div class="specs-grid">
+        <div class="spec-group">
+          <h4>Game Info</h4>
+          <ul class="spec-list">
+            <li>Genre <span>Dark Fantasy Metroidvania</span></li>
+            <li>Engine <span>Godot 4</span></li>
+            <li>Price <span>$19.99</span></li>
+            <li>Playtime (Story) <span>15-20 hours</span></li>
+            <li>Playtime (100%) <span>25-30 hours</span></li>
+            <li>Developer <span>Dark Ascension Labs</span></li>
+          </ul>
+        </div>
+        <div class="spec-group">
+          <h4>Content</h4>
+          <ul class="spec-list">
+            <li>Zones <span>12</span></li>
+            <li>Boss Fights <span>12</span></li>
+            <li>Combat Spells <span>7</span></li>
+            <li>Movement Abilities <span>3</span></li>
+            <li>Artifacts <span>8</span></li>
+            <li>Enemy Types <span>6</span></li>
+          </ul>
+        </div>
+        <div class="spec-group">
+          <h4>Platforms</h4>
+          <ul class="spec-list">
+            <li>Steam (PC) <span>Launch Platform</span></li>
+            <li>PlayStation 5 <span>Post-Launch</span></li>
+            <li>Xbox Series X|S <span>Post-Launch</span></li>
+            <li>Nintendo Switch <span>Planned</span></li>
+          </ul>
+        </div>
+        <div class="spec-group">
+          <h4>Post-Launch</h4>
+          <ul class="spec-list">
+            <li>Free Update <span>New Game+, Boss Rush, Hidden Zone</span></li>
+            <li>DLC: The Awakened Path <span>$7.99 — 4 new zones, 2 spells</span></li>
+            <li>DLC: Convergence <span>$9.99 — Cross-game content, co-op</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Follow the Development</h2>
+        <p>Thelsicker Ascends is actively in development. Follow us to stay updated on release dates, demos, and more.</p>
+        <div class="social-links">
+          <a href="index.html" class="social-link">Dark Ascension Labs</a>
+          <a href="https://github.com/mikejamescalvert" class="social-link">GitHub</a>
+          <a href="https://darkascension.app" class="social-link">darkascension.app</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#games">Games</a>
+        <a href="#features">Features</a>
+        <a href="https://darkascension.app/privacy.html">Privacy Policy</a>
+      </div>
+      <p>&copy; 2026 Dark Ascension Labs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
